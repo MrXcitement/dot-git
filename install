@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# install --- make symbolic links in the users home directory
+# Mike Barker <mike@thebarkers.com>
+# May 9th, 2018
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
+for SOURCE_FILE in ${DIR}/home/* $DIR/home/.[!.]*; do
+    if [ -e "${SOURCE_FILE}" ]; then
+        FILENAME="${SOURCE_FILE##*/}"
+        TARGET_FILE="${HOME}/${FILENAME}"
+        
+        # backup existing file
+        if [ -e "${TARGET_FILE}" ]; then
+            if ! [ -h "${TARGET_FILE}" ]; then
+                echo "Backing up ${FILENAME}"
+                mv -v "${TARGET_FILE}" "${TARGET_FILE}.backup"
+            fi
+        fi
+
+        # link the file
+        if ! [ -e "${TARGET_FILE}" ]; then
+            echo "Linking file ${FILENAME}"
+            ln -sfnv "${SOURCE_FILE}" "${TARGET_FILE}"
+        fi
+    fi 
+done
+

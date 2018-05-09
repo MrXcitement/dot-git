@@ -1,0 +1,17 @@
+# This is Git's per-user configuration file.
+[core]
+# Please adapt and uncomment the following lines:
+	user = Mike Barker
+	email = mike@thebarkers.com
+	excludesfile = /Users/mike/.gitignore_global
+[push]
+	default = simple
+[user]
+	name = Mike Barker
+	email = mike@thebarkers.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
