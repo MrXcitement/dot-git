@@ -1,11 +1,14 @@
 # This is Git's per-user configuration file.
 [core]
 	excludesfile = ~/.gitignore_global
+
 [push]
 	default = simple
+
 [user]
 	name = Mike Barker
 	email = mike@thebarkers.com
+
 [alias]
     cp = cherry-pick
 	st = status -s
