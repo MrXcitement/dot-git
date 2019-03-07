@@ -17,7 +17,7 @@
 	cob = checkout -b
 	ci = commit
 	br = branch
-    diff = diff --word-diff 
+    dw = diff --word-diff 
     dc = diff --cached
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	type = cat-file -t
@@ -34,3 +34,9 @@
     fl = "!git file-log"
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
