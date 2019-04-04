@@ -6,7 +6,8 @@
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-for SOURCE_FILE in ${DIR}/home/* $DIR/home/.[!.]*; do
+shopt -s dotglob
+for SOURCE_FILE in "${DIR}"/home/*; do
     if [ -e "${SOURCE_FILE}" ]; then
         FILENAME="${SOURCE_FILE##*/}"
         TARGET_FILE="${HOME}/${FILENAME}"
@@ -26,4 +27,4 @@ for SOURCE_FILE in ${DIR}/home/* $DIR/home/.[!.]*; do
         fi
     fi 
 done
-
+shopt -u dotglob
