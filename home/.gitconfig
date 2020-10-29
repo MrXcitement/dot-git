@@ -34,3 +34,9 @@
     fl = "!git file-log"
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
+
+[hub]
+	protocol = https
+
+[credential]
+    helper = "!f() { if [ \"$(uname -s)\" = Darwin ]; then git credential-osxkeychain \"$@\"; else git credential-cache --timeout 3600 \"$@\"; fi; };f"
