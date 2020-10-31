@@ -1,6 +1,0 @@
-#!/bin/bash
-# tests --- run static tests against this repository
-# Mike Barker <mike@thebarkers.com>
-# March 14th 2019
-
-shellcheck {install,tests}
