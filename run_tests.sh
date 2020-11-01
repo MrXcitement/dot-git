@@ -1,5 +1,5 @@
 #!/bin/bash
-# tests --- run static tests against this repository
+# run_tests.sh --- run static tests against this repository
 # Mike Barker <mike@thebarkers.com>
 # March 14th 2019
 
