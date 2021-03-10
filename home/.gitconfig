@@ -34,6 +34,8 @@
     fl = "!git file-log"
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
+    pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
+
 
 [hub]
 	protocol = https
