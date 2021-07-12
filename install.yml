@@ -2,6 +2,5 @@
 - hosts: localhost
   connection: local
   tasks:
-    - debug:
-        msg: "Hello from dot-git..."
-
+    - name: Run install tasks for this repository
+      include_tasks: ./install-tasks.yml
