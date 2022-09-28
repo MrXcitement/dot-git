@@ -47,7 +47,7 @@
 	defaultBranch = main
 
 # Include OS specific configuration
-[incldueIf "gitdir:%(prefix)//home/"]
+[includeIf "gitdir:%(prefix)//home/"]
     path = ~/.gitconfig-linux
 
 [includeIf "gitdir:%(prefix)//Users/"]
