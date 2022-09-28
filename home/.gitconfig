@@ -47,9 +47,12 @@
 	defaultBranch = main
 
 # Include OS specific configuration
-[includeIf "gitdir:%(prefix)//Users"]
-    path = ~/.gitconfig-macos
+[incldueIf "gitdir:%(prefix)//home/"]
+    path = ~/.gitconfig-linux
 
-[includeIf "gitdir:C:"]
+[includeIf "gitdir:%(prefix)//Users/"]
+    path = ~/.gitconfig-darwin
+
+[includeIf "gitdir:C:/"]
     path = ~/.gitconfig-windows
 
