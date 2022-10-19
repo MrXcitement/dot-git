@@ -1,6 +1,4 @@
 [core]
     sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 [credential]
-    helper = manager
-[credential "helperselector"]
-	selected = manager-core
+	helper = manager-core
