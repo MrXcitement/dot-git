@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [core]
-	autocrlf = true
+	autocrlf = input
 	excludesfile = ~/.gitignore_global
 
 [push]
