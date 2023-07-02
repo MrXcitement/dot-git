@@ -53,6 +53,6 @@
 [includeIf "gitdir:%(prefix)//Users/"]
     path = ~/.gitconfig-darwin
 
-[includeIf "gitdir:C:/"]
+[includeIf "gitdir:C:/Users/"]
     path = ~/.gitconfig-windows
 
