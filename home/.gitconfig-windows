@@ -10,4 +10,4 @@
 # See: https://github.com/git-for-windows/git/discussions/3410#discussioncomment-1276400
 [credential]
     helper = ""
-	helper = manager-core
+    helper = manager
