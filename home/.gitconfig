@@ -50,7 +50,7 @@
 [includeIf "gitdir:/home/"]
     path = ~/.gitconfig-linux
 
-[includeIf "gitdir:%(prefix)//Users/"]
+[includeIf "gitdir:/Users/"]
     path = ~/.gitconfig-darwin
 
 [includeIf "gitdir:C:/Users/"]
