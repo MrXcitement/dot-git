@@ -1,29 +1,18 @@
 # This is Git's per-user configuration file.
-[core]
-	autocrlf = input
-	excludesfile = ~/.gitignore_global
-
-[push]
-	default = simple
-
-[user]
-	name = Mike Barker
-	email = mike@thebarkers.com
-
 [alias]
     cp = cherry-pick
-	st = status -s
+    st = status -s
     cl = clone
-	co = checkout
-	cob = checkout -b
-	ci = commit
-	br = branch
-    dw = diff --word-diff 
+    co = checkout
+    cob = checkout -b
+    ci = commit
+    br = branch
+    dw = diff --word-diff
     dc = diff --cached
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-	type = cat-file -t
-	dump = cat-file -p
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
     lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
@@ -36,23 +25,26 @@
     dl = "!git ll -1"
     dlc = diff --cached HEAD^
     pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
-
-
+[core]
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
 [hub]
-	protocol = https
-
+    protocol = https
+[init]
+    defaultBranch = main
 [pull]
     ff = only
-[init]
-	defaultBranch = main
+[push]
+    default = simple
+[user]
+    name = Mike Barker
+    email = mike@thebarkers.com
 
+##
 # Include OS specific configuration
 [includeIf "gitdir:/home/"]
     path = ~/.gitconfig-linux
-
 [includeIf "gitdir:/Users/"]
     path = ~/.gitconfig-darwin
-
 [includeIf "gitdir:C:/Users/"]
     path = ~/.gitconfig-windows
-
