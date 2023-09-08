@@ -1,6 +1,5 @@
 # .gitconfig-windows -- Windows specific global gitconfig settings
 # Mike Barker <mike@thebarkers.com>
-# October 24th, 2022
 
 # Need sshCommand to be set for 1Password to handle 'git:' repos that connect via ssh
 [core]
@@ -11,3 +10,12 @@
 [credential]
     helper = ""
     helper = manager
+[credential "https://github.com"]
+    helper =
+    helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+    helper =
+    helper = !gh auth git-credential
+[credential "https://gitlab.thebarkers.com"]
+    helper =
+    helper = !glab auth git-credential

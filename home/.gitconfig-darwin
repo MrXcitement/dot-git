@@ -1,5 +1,14 @@
+# .gitconfig-darwin -- macOS specific global gitconfig settings
+# Mike Barker <mike@thebarkers.com>
+
 [credential]
     helper = osxkeychain
 [credential "https://github.com"]
-        helper =
-        helper = !gh auth git-credential
+    helper =
+    helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+    helper =
+    helper = !gh auth git-credential
+[credential "https://gitlab.thebarkers.com"]
+    helper =
+    helper = !glab auth git-credential

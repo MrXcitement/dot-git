@@ -1,8 +1,14 @@
+# .gitconfig-linux -- Linux specific global gitconfig settings
+# Mike Barker <mike@thebarkers.com>
+
 [credential]
     helper = cache
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper =
+    helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+[credential "https://gitlab.thebarkers.com"]
+    helper =
+    helper = !glab auth git-credential
