@@ -9,25 +9,30 @@ Function Test-SymbolicLink([string]$path) {
     Return [bool]($file.LinkType -eq "SymbolicLink")
 }
 
-# New-SymbolicLink
-Function New-SymbolicLink([string]$link, [string]$target) {
-    New-Item -ItemType SymbolicLink -Path $link -Value $target -Force
-}
-
-# Get all the files and directories in the home folder
-$files = $(Get-ChildItem $PSScriptRoot\home\.*)
-
-# Foreach file and or folder
-ForEach ($file in $files) {
-    $link = "$($env:userprofile)\$($file.Name)"
-    $target = $file
+# Backup an existing file
+Function Backup-File([string]$file) {
     # If the file/folder exists and is not a link
     if ((Test-Path $link) -And (-Not (Test-SymbolicLink $link))) {
         # backup the file/folder
         Write-Warning "Backup $link $link.backup"
         Move-Item -Path $link -Destination "$($link).backup"
     }
-    # Create a link to file/folder
-    Write-Output "Linking: $($link) to $($target)"
-    New-SymbolicLink $link $target | Out-Null
 }
+
+# Link a file to a target
+Function Link-File([string]$link, [string]$target) {
+
+    # Backup existing link file
+    Backup-File $link
+
+    # If the link does not exist
+    if (-Not (Test-Path $link)) {
+        # Create a link to file/folder
+        Write-Output "Linking: $($link) to $($target)"
+        New-Item -ItemType SymbolicLink -Path $link -Value $target -Force | Out-Null
+    }
+}
+
+Link-File "~/.gitconfig" "$PSScriptRoot/home/.gitconfig"
+Link-File "~/.gitconfig-os" "$PSScriptRoot/home/.gitconfig-windows"
+Link-File "~/.gitignore_global" "$PSScriptRoot/home/.gitignore_global"
