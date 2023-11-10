@@ -4,27 +4,38 @@
 # Mike Barker <mike@thebarkers.com>
 # May 9th, 2018
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# Backup a file/directory by renaming it with the current date and time
+backup_file() {
+	local file="${1}"
+    local file_ext
+
+    # file exists and not a symlink
+	if [[ -e "${file}" && ! -h "${file}" ]]; then
+        file_ext=$(date +%Y%m%d%H%M)
+        printf "Backup: %s -> %s\n" "${file}" "${file}.${file_ext}"
+        mv "${file}" "${file}.${file_ext}"
+	fi
+}
+
+# create a symbolic link if one does not allready exist
+link_file() {
+    local target="${1}"
+    local link="${2}"
+
+    backup_file "${link}"
+    if [[ ! -e "${link}" ]]; then
+        printf "Link: "
+        ln -sfnv "${target}" "${link}"
+    fi
+}
+
 DIR="$(cd "$(dirname "$0")" && pwd)"
+osname=$(uname -s | tr '[:upper:]' '[:lower:]')
 
-shopt -s dotglob
-for SOURCE_FILE in "${DIR}"/home/*; do
-    if [ -e "${SOURCE_FILE}" ]; then
-        FILENAME="${SOURCE_FILE##*/}"
-        TARGET_FILE="${HOME}/${FILENAME}"
-        
-        # backup existing file
-        if [ -e "${TARGET_FILE}" ]; then
-            if ! [ -h "${TARGET_FILE}" ]; then
-                echo "Backing up ${FILENAME}"
-                mv -v "${TARGET_FILE}" "${TARGET_FILE}.backup"
-            fi
-        fi
-
-        # link the file
-        if ! [ -e "${TARGET_FILE}" ]; then
-            echo "Linking file ${FILENAME}"
-            ln -sfnv "${SOURCE_FILE}" "${TARGET_FILE}"
-        fi
-    fi 
-done
-shopt -u dotglob
+link_file "${DIR}/home/.gitconfig" "${HOME}/.gitconfig"
+link_file "${DIR}/home/.gitignore_global" "${HOME}/.gitignore_global"
+link_file "${DIR}/home/.gitconfig-${osname}" "${HOME}/.gitconfig-os"
