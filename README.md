@@ -1,5 +1,7 @@
 # Personal git configuration
-
+## Archived on 3/16/2024
+I have migrated this configuration into my chezmoi [dotfiles](https://github.com/mrxcitement/dotfiles) repository.
+<hr>
 My global git config files and folders.
 
 ## Install
